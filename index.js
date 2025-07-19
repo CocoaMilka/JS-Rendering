@@ -80,13 +80,8 @@ function ScaleUV(uv, scale)
     return scaled_uvs;
 }
 
-function renderScene()
+function RasterizeLines()
 {
-    for (let i = 0;  i < uv_coords.length; i++)
-    {
-        c1_ctx.fillRect(scaled_uv_coords[i][0],scaled_uv_coords[i][1],3,3);
-    }
-
     for (let i = 0; i < edge_list.length; i++)
     {
         c1_ctx.beginPath();
@@ -109,7 +104,7 @@ function animate() {
     uv_coords = CameraSpaceToUVSpace(cam_space_coords);
     scaled_uv_coords = ScaleUV(uv_coords, 200);
 
-    renderScene();
+    RasterizeLines();
     requestAnimationFrame(animate);
 }
 
